@@ -10,7 +10,7 @@ import Slider, { Settings } from 'react-slick';
 
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 
-import { ProductItem } from '~/components/ProductItem';
+import { ProductItem } from '~/components/global/ProductItem';
 
 const Products = () => {
   const sliderSettings: Settings = {

@@ -18,9 +18,9 @@ import AppProvider from '~/hooks';
 
 import lightTheme from '~/public/styles/themes/light';
 
-import { SiteHeader } from '~/components/Header';
+import { SiteHeader } from '~/components/global/Header';
 
-import { SiteFooter } from '~/components/Footer';
+import { SiteFooter } from '~/components/global/Footer';
 
 Router.events.on('routeChangeStart', () => {
   NProgress.start();

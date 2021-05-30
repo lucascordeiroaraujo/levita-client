@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { SlideShow } from '~/components/SlideShow';
+import { SlideShow } from '~/components/pages/home/SlideShow';
 
-import { About } from '~/components/About';
+import { About } from '~/components/pages/home/About';
 
-import { Products } from '~/components/Products';
+import { Products } from '~/components/pages/home/Products';
 
-import { Budget } from '~/components/Budget';
+import { Budget } from '~/components/global/Budget';
 
 const IndexPage = () => (
   <>

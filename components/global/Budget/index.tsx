@@ -4,7 +4,7 @@ import { Container } from '~/public/styles/global';
 
 import { BudgetContainer } from './style';
 
-import { Input } from '~/components/Input';
+import { Input } from '~/components/global/Input';
 
 import { Form } from '@unform/web';
 
