@@ -18,24 +18,34 @@ const ProductItem = ({
   title,
   description,
   slug,
-}: IProductItemProps) => (
-  <ProductItemContainer>
-    <img
-      src={require(`~/public/images/placeholders/product-1.jpg`)}
-      alt={title}
-      title={title}
-    />
+}: IProductItemProps) => {
+  console.log(image);
 
-    <span>{category}</span>
+  return (
+    <ProductItemContainer>
+      <div className="product-image-container">
+        <img
+          src={require(`~/public/images/placeholders/product-1.jpg`)}
+          alt={title}
+          title={title}
+        />
 
-    <h1>{title}</h1>
+        <Link href={`/produto/${slug}`}>
+          <a title="Confira">saiba mais</a>
+        </Link>
+      </div>
 
-    <p>{description}</p>
+      <span>{category}</span>
 
-    <Link href={`/produto/${slug}`}>
-      <a title="Confira">saiba mais</a>
-    </Link>
-  </ProductItemContainer>
-);
+      <h1>{title}</h1>
+
+      <p>{description}</p>
+
+      <Link href={`/produto/${slug}`}>
+        <a title="Confira">saiba mais</a>
+      </Link>
+    </ProductItemContainer>
+  );
+};
 
 export { ProductItem };

@@ -69,7 +69,7 @@ const Budget = () => {
   }, []);
 
   return (
-    <BudgetContainer>
+    <BudgetContainer id="budget">
       <Container className="budget-container">
         <h1 className="site-default-title">Solicite um orçamento</h1>
 

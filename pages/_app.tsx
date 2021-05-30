@@ -20,6 +20,8 @@ import lightTheme from '~/public/styles/themes/light';
 
 import { SiteHeader } from '~/components/global/Header';
 
+import { Budget } from '~/components/global/Budget';
+
 import { SiteFooter } from '~/components/global/Footer';
 
 Router.events.on('routeChangeStart', () => {
@@ -150,6 +152,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
               <SiteHeader />
 
               <Component {...pageProps} />
+
+              <Budget />
 
               <SiteFooter />
             </AppProvider>

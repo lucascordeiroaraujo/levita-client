@@ -1,59 +1,111 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { Container } from '~/public/styles/global';
 
-import { HeaderContainer } from './style';
+import {
+  HeaderContainer,
+  HeaderMenuContainer,
+  HeaderMenuItem,
+  MenuMobileContainer,
+} from './style';
 
 import Link from 'next/link';
 
-const SiteHeader = () => (
-  <HeaderContainer>
-    <Container className="header-container">
-      <Link href="#">
-        <a title="Página inicial">
-          <img
-            src={require('~/public/images/levita.png')}
-            alt="Levita - Móveis Hospitalares"
-            title="Levita - Móveis Hospitalares"
-            width="176"
-            height="75"
-          />
-        </a>
-      </Link>
+import { useRouter } from 'next/router';
 
-      <ul>
-        <li>
-          <Link href="#">
-            <a className="active-item" title="Página inicial">
-              Início
-            </a>
-          </Link>
-        </li>
+import { Link as ReactScrollLink } from 'react-scroll';
 
-        <li>
-          <Link href="#">
-            <a title="Conheça a Levita - Móveis Hospitalares">
-              Sobre a empresa
-            </a>
-          </Link>
-        </li>
+import OutsideClickHandler from 'react-outside-click-handler';
 
-        <li>
-          <Link href="#">
-            <a title="Confira nossos produtos">Produtos</a>
-          </Link>
-        </li>
+const SiteHeader = () => {
+  const router = useRouter();
 
-        <li>
-          <Link href="#">
-            <a title="Entre em contato conosco">Contato</a>
-          </Link>
-        </li>
-      </ul>
+  const isCurrentRouter = useCallback(
+    (slug: string) => {
+      return router.pathname === slug;
+    },
+    [router],
+  );
 
-      <button>Solicite um orçamento</button>
-    </Container>
-  </HeaderContainer>
-);
+  const [menuMobileOpend, setMenuMobileOpen] = useState(false);
+
+  const handleToggleMenuMobile = () => {
+    setMenuMobileOpen(!menuMobileOpend);
+  };
+
+  const handleCloseMenuMobile = () => {
+    setMenuMobileOpen(false);
+  };
+
+  return (
+    <HeaderContainer>
+      <Container className="header-container">
+        <Link href="/">
+          <a title="Página inicial">
+            <img
+              src={require('~/public/images/levita.png')}
+              alt="Levita - Móveis Hospitalares"
+              title="Levita - Móveis Hospitalares"
+              width="176"
+              height="75"
+            />
+          </a>
+        </Link>
+
+        <OutsideClickHandler onOutsideClick={handleCloseMenuMobile}>
+          <MenuMobileContainer
+            menuMobileOpend={menuMobileOpend}
+            onClick={handleToggleMenuMobile}
+          >
+            <span />
+          </MenuMobileContainer>
+        </OutsideClickHandler>
+
+        <HeaderMenuContainer menuMobileOpend={menuMobileOpend}>
+          <HeaderMenuItem isActive={isCurrentRouter('/')}>
+            <Link href="/">
+              <a title="Página inicial">Início</a>
+            </Link>
+          </HeaderMenuItem>
+
+          <HeaderMenuItem>
+            {router.pathname === '/' ? (
+              <ReactScrollLink to="sobre-a-empresa" spy={true} smooth={true}>
+                Sobre a empresa
+              </ReactScrollLink>
+            ) : (
+              <Link href="/#sobre-a-empresa">
+                <a title="Conheça a Levita - Móveis Hospitalares">
+                  Sobre a empresa
+                </a>
+              </Link>
+            )}
+          </HeaderMenuItem>
+
+          <HeaderMenuItem isActive={isCurrentRouter('/produtos')}>
+            <Link href="/produtos">
+              <a title="Confira nossos produtos">Produtos</a>
+            </Link>
+          </HeaderMenuItem>
+
+          <HeaderMenuItem>
+            <Link href="#">
+              <a title="Entre em contato conosco">Contato</a>
+            </Link>
+          </HeaderMenuItem>
+        </HeaderMenuContainer>
+
+        <ReactScrollLink
+          className="budget"
+          to="budget"
+          spy={true}
+          smooth={true}
+        >
+          Solicite um orçamento
+        </ReactScrollLink>
+      </Container>
+    </HeaderContainer>
+  );
+};
 
 export { SiteHeader };

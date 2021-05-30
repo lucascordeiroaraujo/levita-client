@@ -6,8 +6,6 @@ import { About } from '~/components/pages/home/About';
 
 import { Products } from '~/components/pages/home/Products';
 
-import { Budget } from '~/components/global/Budget';
-
 const IndexPage = () => (
   <>
     <SlideShow />
@@ -15,8 +13,6 @@ const IndexPage = () => (
     <About />
 
     <Products />
-
-    <Budget />
   </>
 );
 

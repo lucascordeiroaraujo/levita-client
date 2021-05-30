@@ -10,7 +10,7 @@ import {
 } from './style';
 
 const About = () => (
-  <Container fullContainer>
+  <Container fullContainer id="sobre-a-empresa">
     <AboutContainer>
       <TitleContainer>
         <h1>Quem Somos?</h1>
