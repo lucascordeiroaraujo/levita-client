@@ -133,7 +133,6 @@ export default createGlobalStyle`
 
 interface IContainerProps {
   fullContainer?: boolean;
-  smallContainer?: boolean;
 }
 
 export const AppBox = styled.div`
